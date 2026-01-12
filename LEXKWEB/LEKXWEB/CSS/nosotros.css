@@ -1,0 +1,505 @@
+/* --- RESETEO GENERAL --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body, ul, li {
+  list-style: none; /* quita los puntos de listas */
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f3f3;
+}
+
+/* --- HEADER --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background:rgb(4, 41, 97); /* 🔥 gris sólido */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* --- LOGO --- */
+.logo img {
+  height: 100px;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* --- MENÚ --- */
+nav {
+  flex: 1;
+  text-align: center;
+}
+
+.menu {
+  display: inline-flex;
+  gap: 20px;
+}
+.menu > li {
+  position: relative;
+}
+.menu > li > a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  padding: 30px 10px;
+  display: block;
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Efecto línea roja */
+.menu > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #afafaf;
+  transition: width 0.3s ease;
+}
+.menu > li > a:hover::after {
+  width: 100%;
+}
+.menu > li > a:hover {
+  color: #d9cae7;
+}
+
+/* --- SUBMENÚ --- */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* se coloca EXACTAMENTE debajo del menú */
+  left: 0;
+  background: rgb(226, 222, 222);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu li a {
+  color: black;
+  padding: 12px 18px;
+  display: block;
+  text-decoration: none;
+}
+
+.submenu li a:hover {
+  background-color: rgba(148, 146, 146, 0.829);
+}
+
+.menu > li {
+  position: relative; /* NECESARIO para que top:100% funcione */
+}
+
+.menu > li:hover .submenu {
+  display: block;
+}
+
+/* --- BARRA REDES --- */
+.barra-redes {
+  position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+.barra-redes a {
+    background-color: #3e0c8f;
+    color: white;
+    width: 70px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.barra-redes a:hover {
+    background-color: #2363da;
+    transform: scale(1.1);
+}
+.barra-redes i {
+    font-size: 20px;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- IMAGEN PRINCIPAL --- */
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(35%); /* oscurece la imagen como en tu ejemplo */
+}
+
+/* --- TEXTO SOBRE LA IMAGEN --- */
+.hero-text {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 80%;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+
+     max-width: 700px; /* 🔹 Reduce el ancho del texto */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;  /* 🔹 BAJA el texto p */
+}
+
+/* --- BOTÓN --- */
+.btn {
+    display: inline-block;
+    padding: 19px 60px;
+    background: #2e3481;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: 40px; /* baja el botón */
+}
+.btn:hover {
+    background: #480488;
+}
+
+
+
+    /* --- HERO (imagen principal) --- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Imagen */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Degradado oscuro */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(12, 12, 12, 0.3), rgba(46, 46, 46, 0.85));
+  z-index: 1;
+}
+
+/* Contenedor del texto */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Texto */
+.hero-texto p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: justify; /* alineado */
+}
+
+/* --- Sección gris de fondo --- */
+.info-section {
+  background-color: #372f64; /* gris suave */
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Cuadro blanco encima --- */
+.info-container {
+  background-color: #ffffff; /* blanco */
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 0; /* sin bordes redondeados */
+}
+
+/* --- Lado del texto (izquierdo) --- */
+.info-texto {
+  width: 45%;
+  text-align: justify;
+}
+
+.info-texto h2 {
+  color: #3b3255; /* rojo oscuro */
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.info-texto p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  
+}
+
+.info-texto ul {
+  list-style: square;
+  padding-left: 20px;
+}
+
+/* --- Lado de la imagen (derecho) --- */
+.info-imagen {
+  height: 100vb;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.info-imagen img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --- Fondo gris para la nueva sección --- */
+.valores-section {
+  background-color: #06056d; /* gris */
+  width: 100%; /* ocupa todo el ancho */
+  min-height: 100vh; /* 🔹 altura de toda la pantalla visible */
+  padding: 80px 0; /* espacio arriba y abajo */
+  margin-top: 60px; /* separación desde la parte superior anterior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Contenedor blanco dentro --- */
+.valores-container {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 1200px;
+  padding: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- Carrusel continuo centrado --- */
+.carousel {
+  width: 100%;
+  max-width: 1000px;
+  overflow: hidden;
+  border: 8px solid rgb(40, 25, 82);
+  box-shadow: 0 20px 35px rgba(54, 53, 53, 0.4);
+  border-radius: 10px;
+  margin: 40px auto; /* centrado y un poco más abajo */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* --- Contenedor con todas las imágenes --- */
+.slides {
+  display: flex;
+  width: calc(800%); /* 🔹 8 imágenes si se repiten las 4 para animar */
+  animation: scroll 30s linear infinite;
+}
+
+/* --- Cada imagen del carrusel --- */
+.slides img {
+  width: 60%; /* 🔹 4 imágenes visibles, cada una ocupa 25% */
+  height: 400px;
+  object-fit: cover;
+}
+
+/* --- Animación del carrusel --- */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-240%); /* se mueve hasta la mitad (4 imágenes repetidas) */
+  }
+}
+
+/* --- Texto debajo del carrusel --- */
+.valores-texto {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.valores-texto h2 {
+  color: #0c0e79;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.valores-texto p {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+
+/* --- FOOTER --- */
+
+
+
+.footer {
+   background:rgb(4, 41, 97); /* 🔥 gris sólido */
+    color: white;
+    padding: 60px 0 40px 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+}
+.footer::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: linear-gradient(to right, #ffffff, #dddcdf, #c9c9dd);
+    margin-bottom: 20px;
+}
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+.footer-logo {
+    flex: 1 1 250px;
+    text-align: center;
+}
+.footer-logo img {
+    width: 150px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+}
+.footer-logo p {
+    font-size: 14px;
+    color: #ffffff;
+}
+.footer-contacto {
+    flex: 1 1 250px;
+}
+.footer-contacto h3,
+.footer-redes h3 {
+    font-size: 18px;
+    color: #f3eeee;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffffff;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+.footer-contacto p {
+    font-size: 15px;
+    color: #dddbdb;
+    margin: 6px 0;
+}
+.footer-contacto i {
+    color: #b1b1b1;
+    margin-right: 8px;
+}
+.footer-redes {
+    flex: 1 1 200px;
+    text-align: center;
+}
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.footer-icons a {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #1d1933;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+.footer-icons a:hover {
+    background-color: #675297;
+    transform: translateY(-4px);
+}
+
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .footer-contenido {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-logo,
+    .footer-contacto,
+    .footer-redes {
+        flex: none;
+        width: 100%;
+    }
+}
